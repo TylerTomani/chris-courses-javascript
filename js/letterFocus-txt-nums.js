@@ -27,16 +27,10 @@ addEventListener('keydown', e => {
 
     const letteredEls = allEls.filter(el => {
         const text = getCleanText(el)
-        let word = text.split(/s+|[-(]/)
+        const word = text.split(/s+|[-(]/)
         
         return word.some(el => {
-            if(!isNaN(letter)){ 
-                console.log(el)
-                if(el[0] === 0){
-                    return el
-
-                }
-            }
+            const cleaned = el.replace(/^a-z0-9/)
             // return el
         })
 
