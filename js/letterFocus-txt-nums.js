@@ -27,10 +27,19 @@ addEventListener('keydown', e => {
 
     const letteredEls = allEls.filter(el => {
         const text = getCleanText(el)
-        const word = text.split(/s+|[-(]/)
+        const word = text.split(/s+|[-()]/)
         
         return word.some(el => {
-            const cleaned = el.replace(/^a-z0-9/)
+            const cleaned = el.replace(/^[^a-z0-9]+/i,' ')
+
+            if(!cleaned)return
+            if(isNaN(letter)){
+                const firstletter = cleaned.match(/[a-z]/i)?.[0]
+                return firstletter == letter
+            }else{
+                const firstDigit = cleaned.match(/[1-9]/)?.[0]
+                return firstDigit == letter
+            }
             // return el
         })
 
